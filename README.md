@@ -15,8 +15,7 @@ Utility Programs
 * do-all-plotError.sh
 
 Overall Execution :
-1. Input file with detector parameters (i.e. axis to be simulated over, range to be simulated over, simulation energy) 
-   used to create rat macros (Macro_Generator.py)
+1.Input file with detector parameters (i.e. axis to be simulated over, range to be simulated over, simulation energy) used to create rat macros (Macro_Generator.py).
 2. Rat macros used to create root files. 
 3. Root files used to create residual histograms, data stored in json files (plotResidual.py)
 4. Json data used to create Bias/Resolution plots for variable being simulated over (plotError.py)
