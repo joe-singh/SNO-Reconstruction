@@ -1,5 +1,7 @@
 # SNO-Reconstruction
 
+Author: Jyotirmai Singh
+
 Modules in the Package:
  
 Main Programs
@@ -15,10 +17,10 @@ Utility Programs
 * do-all-plotError.sh
 
 Overall Execution :
-1.Input file with detector parameters (i.e. axis to be simulated over, range to be simulated over, simulation energy) used to create rat macros (Macro_Generator.py).
-2. Rat macros used to create root files. 
+1. Input file with parameters (i.e. axis/range to be simulated over energy) used to create rat macros (Macro_Generator.py) 
+2. Rat macros used to create root files
 3. Root files used to create residual histograms, data stored in json files (plotResidual.py)
-4. Json data used to create Bias/Resolution plots for variable being simulated over (plotError.py)
+4. Json data used to create Bias/Resolution plots for variable being simulated over (plotError.py) 
 5. Bias/Resolution plots used to create plots of how Mean/RMS/Normalised Chi Square vary with polynomial degree 
    (smear_all.py)
  
