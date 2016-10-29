@@ -1,0 +1,55 @@
+######## smear_all #########
+
+Function: Generate smeared histograms from bias/resolution plots produced from plotError.py with different functions. 
+
+Inputs/Execution: 
+
+$ python smear_all var1 var2 uniform_file
+
+var1: The variable being plotted over. Can be x, y, z.
+var2: The variable whose bias/resolution is being plotted. Can be x, y, z, or ke.
+uniform_file: A root file with uniformly distributed simulations. For instance, if all previous work was done at 2.5MeV, a file x0y0z0ke2.5.root (following 
+ 	      the Macro_Generator.py naming convention) must be present in the directory with uniform even simulations centred on the origin. This is needed
+	      for the smearing procedure. 
+
+Note that this script requires that the file "output_graphs_var1.root" exist already as well, and all plots in this files are valid. 
+
+Output:
+
+This module produces two output files:
+
+"smeared_var1.root" - This file contains smearing histograms where EV values are smeared with random gaussians whose parameters are dictated by
+		      the fit type. Smeared plots are made for polynomials of degree 2 up to degree 9 inclusive. In addition, it contains 4 other
+		      plots plotting the RMS, Mean, Bias Reduced Chi Square, and Resolution Reduced Chi Square vs polynomial degree, to help 
+		      guage the goodness of fit. For exact clarifications on what these are, RMS corresponds to TF1.GetParameter(2), Mean 
+		      to TF1.GetParameter(1), and Reduced Chi Square to TF1.GetChisquare()/(num_of_points - (pol_degree + 1)). The ROOT documentation
+		      can be consulted for further information.
+
+	 	      If a file with this filename already exists, the new plots are just added to it.
+
+"coefficients_var1.txt" - A plaintext file containing the coefficients from each fit applied on the datapoints. If a file with this name exists already, 
+			  the new coefficients are added on at the end. For example the following was taken from a file called coefficients_z.txt, 
+			  so these are the parameters for different degree fits on the datapoints with z Pos and x Bias/x Resolution
+
+x Position
+Bias
+pol2 0.142504311466 0.000166010849937 1.77804938152e-08
+pol3 0.137160829316 0.000220870968585 1.74589944001e-08 -3.31381735561e-12
+pol4 -0.189678237586 0.000216722130253 1.16055438869e-07 -2.84799954719e-12 -3.94230023981e-15
+pol5 -0.136570316745 -3.56763923164e-05 1.0404640298e-07 3.70373904958e-11 -3.33301212424e-15 -1.23310848926e-18
+pol6 0.129868168203 -6.09792349009e-06 -7.29617272821e-08 3.11353680302e-11 1.51371301641e-14 -9.71397114467e-19 -4.71648497225e-22
+pol7 0.0522158449645 0.000343761201244 -3.32460248851e-08 -7.54644895714e-11 1.0559941157e-14 7.27182926276e-18 -3.27927207226e-22 -1.79800118416e-25
+pol8 0.0907061280064 0.000365970513906 -7.81312723044e-08 -8.26128869776e-11 1.90052644391e-14 7.87548553825e-18 -8.40166568895e-22 -1.94444065187e-25 9.69197381842e-30
+pol9 0.0289542503278 0.000572096090654 -1.92636798718e-09 -1.8830567003e-10 2.21100147359e-15 2.24866777069e-17 3.34639872332e-22 -9.38867362422e-25 -1.5406497644e-29 1.26057073963e-32
+Resolution
+pol2 55.3937331706 0.00100104809738 6.08609383294e-08
+pol3 55.410982417 -0.00139436337302 1.10871651131e-07 1.49328800319e-10
+pol4 59.5046439073 -0.00147640585204 -1.14520087693e-06 1.54610089943e-10 5.12990121614e-14
+pol5 59.0032483538 0.00160958828169 -1.0586369182e-06 -3.38014083271e-10 4.6766830921e-14 1.53877663748e-17
+pol6 56.6173412858 0.00146166057033 5.61056084933e-07 -3.07954553489e-10 -1.24672879997e-13 1.38271468573e-17 4.42030447919e-21
+pol7 57.0503480322 -0.00100057159371 3.68855016418e-07 4.5007503122e-10 -1.0273354168e-13 -4.54546596057e-17 3.68987017776e-21 1.30369865808e-24
+pol8 58.2319714511 -0.000405845629223 -1.03430925374e-06 2.61155080676e-10 1.6347382233e-13 -2.94574126096e-17 -1.25693721688e-20 9.1114010704e-25 3.0915724767e-28
+pol9 57.9726699545 0.000545231340776 -7.15971889108e-07 -2.29082512904e-10 9.32234340855e-14 3.85690455604e-17 -7.62397701618e-21 -2.56313114183e-24 2.02722967597e-28 5.89032481188e-32
+
+
+

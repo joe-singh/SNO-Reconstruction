@@ -1,0 +1,42 @@
+########## Macro_Generator.py ###########
+
+Function: Generate rat macros for simulations along a range of positions.
+
+Inputs/Execution: 
+Called from command line, for example:
+
+$ python Macro_Generator.py input_file
+
+Input file must be a .txt file containing the parameters for the simulation macros. It must have a format like this:
+
+xmin 0
+xmax 0 
+xstep 0
+ymin 0
+ymax 0
+ystep 0
+zmin -5500
+zmax 5500
+zstep 500
+kemin 3
+kemax 3
+kestep 0
+runs 10000
+filepath /data/snoplus/home/joesingh/snoing/PMTData/3MeV
+
+Note the file must not have a blank first or last line, i.e. each file should have only 13 lines. 
+
+Output:
+The file will produce macros as governed by the input file's parameters. The above example would produce macros for 
+simulations ranging from (0, 0, -5500) to (0, 0, 5500) in steps of 500. Each macro will have 10000 runs at an energy of 3 MeV. 
+
+At present only one variable can be changed, i.e. 2 out of 3 step variables must be 0 and for those variables the min
+and max must be the same. 
+
+The macros produced for the given variable are put in a folder called either x_Macros, y_Macros, or z_Macros depending on
+which variable is being simulated over. These folders are placed in the location given by filepath. 
+
+BUG:
+At present the first call to Macro_Generator.py will create macro files at (0, 0, 0) in all three folders even though other
+macros are properly outputted into the correct folder. This does not cause any functional issues but may be something to 
+check for if this program or a subsequent one starts misbehaving.

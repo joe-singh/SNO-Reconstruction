@@ -1,0 +1,33 @@
+######## plotError #########
+
+Function: Generate resolution/bias plots from json files. 
+
+Inputs/Exection: 
+
+Called from command line:
+
+$ python plotError.py "var1" "var2 Bias/Resolution" "var2 Bias/Resolution Error"
+
+var1: The position variable which is changing in the json_files, e.g. if plotResidual intitially acted on z_Macros then var1 would be 
+     z Pos. var1 must always be either "x Pos", "y Pos", or "z Pos" with the quotations included.
+var2: The variable whose bias/resolution is to be plotted. This must be either x, y, z, or ke. What is plotted depends on 
+      whether the word Bias or Resolution is supplied in the second and third parameters. For example consider
+
+	$ python plotError.py "x Pos" "ke Bias" "ke Bias Error" 
+
+      This will produce a plot of kinetic energy bias as a function of x position with appropriate error bars.
+  
+
+Output:
+This file, when executed once, will make a bias or resolution plot for the given variable with appropriate error bars 
+and save it in a file called "output_graphs_var1.root" where var1 is the input var1 from the command line. Note that for each variable, x, y, z it is needed to call this program 8 times to get a full set of plots (variable vs x/y/z/ke Bias and vs x/y/z/ke Resolution). To
+make this less painful the shell script do-all-plotError.sh will execute all 8 calls for a given variable, and may be used like this:
+
+$ ./do-all-plotError.sh var
+
+Where var would be replaced by either x, y, or z. This will execute the script 8 times and put all created graphs into the same output file.
+
+NOTE:
+If, when running the script, ROOT throws warnings such as "Matrix not positive definite" or "Inversion failed" this is likely because you are 
+using a var which your current json files in the json_files folder are not tracking. For example, using x Pos for var when the json_files are
+changing in y will cause undefined behaviour. 

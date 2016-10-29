@@ -1,0 +1,30 @@
+########## plotResidual ##########
+
+Function: Generate residuals from .root files in a given folder.
+
+Inputs/Execution:
+
+Called from command line as follows:
+
+$ python plotResidual.py folder_name <file_name>
+
+folder_name: folder in which root files are contained
+file_name: output filename (an optional parameter)
+
+The program will iterate over all root files in the program and create a plot of residuals (EV - MC) for x, y, z, ke for each
+root file. The residuals will be stored in a file called file_name.root. If no name was supplied for this argument, they will 
+be stored in a file called residuals.root.
+
+WARNING:
+plotResidual.py should not receive its own folder as an argument (i.e. never called like python plotResidual.py ./)
+This is because the file creates a root file which will then itself be iterated over. This results in a segmentation 
+fault as this root file is not what the program is intended to work with.
+
+Output:
+residuals.root: Output file of root residuals. 4 residuals for each input file (x, y, z, ke) 
+json_files: Output folder containing bias/resolution information for each root file iterated over. Files will be 
+saved as "root_filename.root", i.e. if the file being iterated over was x0y0z2500.root the json file will be 
+x0y0z2500.json. These are the files that will be used by the later programs. 
+
+Note that running plotResidual.py will cause the json_files folder to be emptied if it exists already. Therefore if 
+json files are neeed for later use, they should be copied/moved to a separate folder.   

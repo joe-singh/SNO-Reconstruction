@@ -1,0 +1,14 @@
+######### multifits ##########
+
+Function: Produce plots of position vs resolution/bias with all polynomial fits (degree 2-9) displayed simultaneously. 
+
+Inputs/Execution:
+
+This file does not have a main method, so it must be executed using ROOT. It can be called like this:
+
+.x multifits.cc(std::string var)
+
+var: The variable whose plots are to be generated. Can be either x, y, or z.
+
+Output: This produces one file "MultipleFits_var1.root", where var1 is the variable given in the initial call. This file
+	contains all the plots produced by this file. If a file of the same name exists, it is overwritten.  

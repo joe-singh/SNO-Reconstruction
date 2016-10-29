@@ -1,0 +1,12 @@
+###### PDFConverter ######
+
+Function: Takes all multiplots in files produced by multifits.cc and outputs their pdfs.
+
+Input/Execution:
+
+Must be used with root as there is no main method:
+
+.x PDFConverter.cc(std::string var)
+
+var: Variable whose plots are to be accessed, i.e. .x PDFConverter("x") will take all the graphs in "MultipleFits_x.root" 
+     and output their pdf versions.
