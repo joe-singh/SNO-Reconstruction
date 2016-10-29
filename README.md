@@ -1,8 +1,6 @@
 # SNO-Reconstruction
 
 ## Author: Jyotirmai Singh
-
-### Modules in the Package:
  
 #### Main Programs
 * Macro_Generator.py
