@@ -16,7 +16,8 @@ Utility Programs
 * rat-cluster-good.sh
 * do-all-plotError.sh
 
-Overall Execution :
+Execution:
+
 1. Input file with parameters (i.e. axis/range to be simulated over energy) used to create rat macros (Macro_Generator.py) 
 2. Rat macros used to create root files
 3. Root files used to create residual histograms, data stored in json files (plotResidual.py)
