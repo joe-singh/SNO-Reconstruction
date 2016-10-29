@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Call in command line by using python3 Macro_Generator.py "file-name".txt.
 Outputs .mac files for use with rat, stored in folders called 'x_Macros',
 'y_Macros', 'z_Macros' in the directory. If these already exist, the created

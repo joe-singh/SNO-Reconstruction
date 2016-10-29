@@ -1,3 +1,7 @@
+/**
+   Program to produce bias/resolution plots with all fits together.
+   @author: Jyotirmai Singh 30/10/2016
+*/
 #include <string>
 #include <sstream>
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """A program which uses json files to make a plot of how input quantities vary
 given different initial conditions (specified in user generated macros). Inputs
 should be correct parameters from json files made by plotError.py and stored in

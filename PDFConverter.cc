@@ -1,3 +1,7 @@
+/**
+   Program to convert multiple fit plots to PDF format
+   @author Jyotirmai Singh 30/10/2016
+*/
 #include <string>
 #include <iostream>
 std::string correctedName(std::string name) {

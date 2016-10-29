@@ -1,4 +1,5 @@
-#!usr/bin/env python
+#!/usr/bin/env python
+"""Function: Generate smeared histograms from bias/resolution plots produced from plotError.py with different functions.""" 
 import ROOT, rat, sys, os
 from array import array as array
 
